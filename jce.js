@@ -25,7 +25,10 @@
    * @returns {string}
    */
   const translateErrorName = (message) => {
-    const errorName = message.split(':')[0].replace('Uncaught ', '');
+    const errorName = message
+      .split(':')[0]
+      .replace('Uncaught ', '');
+
     return errorName
       .split(' ')
       .map(item => {
