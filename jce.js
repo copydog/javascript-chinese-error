@@ -18,12 +18,18 @@
     'Maximum call stack size exceeded': '多半是递归函数出现逻辑错误, 导致无限递归'
   };
 
+  /**
+   * Translate error name from message
+   *
+   * @param message
+   * @returns {string}
+   */
   const translateErrorName = (message) => {
     const errorName = message.split(':')[0].replace('Uncaught ', '');
     return errorName
       .split(' ')
       .map(item => {
-        return typeDict[item] || item
+        return typeDict[item] || item.replace('Error', '错误')
       })
       .join(' ')
   };
@@ -38,11 +44,10 @@
     const encodedDescription = description.trim().replace(/\s/g, '%20')
     return `错误: ${name}`
       + `\n\t错误具体描述: ${description}`
-      // + `\n\t错误可能原因: ${possibleReason}`
+      + `\n\t错误可能原因: ${possibleReason}`
       + `\n\t错误所在文件: ${url}:${line}`
       + `\n\t错误所在行数: ${line}`
       + `\n\t----- 解决方案 -----`
-      + `\n\t翻译描述: https://translate.google.cn/#en/zh-CN/${encodedDescription}`
       + `\n\tCSDN解决方案: https://so.csdn.net/so/search/s.do?q=${encodedDescription}&t=%20&u=`;
   };
 
