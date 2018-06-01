@@ -43,8 +43,7 @@
   };
 
   // Waiting for errors
-  global.onerror = function (message, url, line, ...props) {
-    console.log(props)
+  global.onerror = function (message, url, line) {
     const errorName = translateErrorName(message);
     const errorDescription = translateErrorDescription(message);
     console.error(createErrorMessage(errorName, errorDescription, url, line));
