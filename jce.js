@@ -42,6 +42,11 @@
     return descriptionDict[errorDescription] || errorDescription
   };
 
+  const translatePossibleReason = (message) => {
+    const errorDescription = message.split(':')[1];
+    return reasonDict[errorDescription] || '抱歉, 没有相关解释记载'
+  }
+
 
   const createErrorMessage = (name, description, url, line, possibleReason = '') => {
     const encodedDescription = description.trim().replace(/\s/g, '%20')
@@ -58,7 +63,8 @@
   global.onerror = function (message, url, line) {
     const errorName = translateErrorName(message);
     const errorDescription = translateErrorDescription(message);
-    console.error(createErrorMessage(errorName, errorDescription, url, line));
+    const errorReason = translatePossibleReason(message);
+    console.error(createErrorMessage(errorName, errorDescription, url, line, errorReason));
     return true;
   }
 })(window);
