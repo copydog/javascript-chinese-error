@@ -10,9 +10,13 @@
     InternalError: '内部错误',
   };
 
-  const descriptionDict = {};
+  const descriptionDict = {
+    'Maximum call stack size exceeded': '超出最大调用堆栈大小'
+  };
 
-  const reasonDict = {};
+  const reasonDict = {
+    'Maximum call stack size exceeded': '多半是递归函数出现逻辑错误, 导致无限递归'
+  };
 
   const translateErrorName = (message) => {
     const errorName = message.split(':')[0].replace('Uncaught ', '');
@@ -26,7 +30,7 @@
 
   const translateErrorDescription = (message) => {
     const errorDescription = message.split(':')[1];
-    return errorDescription
+    return descriptionDict[errorDescription] || errorDescription
   };
 
 
