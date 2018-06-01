@@ -38,8 +38,8 @@
       + `\n\t错误所在文件: ${url}:${line}`
       + `\n\t错误所在行数: ${line}`
       + `\n\t----- 欢迎使用JCE -----`
-      + `\n\t错误具体描述翻译: https://translate.google.cn/#en/zh-CN/${encodedDescription}`
-      + `\n\t错误CSDN解决方案: https://so.csdn.net/so/search/s.do?q=${encodedDescription}&t=%20&u=`;
+      + `\n\t翻译描述: https://translate.google.cn/#en/zh-CN/${encodedDescription}`
+      + `\n\tCSDN解决方案: https://so.csdn.net/so/search/s.do?q=${encodedDescription}&t=%20&u=`;
   };
 
   // Waiting for errors
